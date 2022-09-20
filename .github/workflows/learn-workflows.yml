@@ -23,4 +23,4 @@ jobs:
   
     steps: 
     - name: Single line script
-      run: echo "Running in ${{ matrix.environ }}"
+      run: echo "Running ${{ github.job }} in ${{ matrix.environ }}"
