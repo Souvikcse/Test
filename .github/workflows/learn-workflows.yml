@@ -7,14 +7,26 @@ on:
         required: true
 
 jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Build project
+      run: echo "Compiling..."
+  prepare-artifacts:
+    needs: build
+    runs-on: windows-latest
+    steps:
+    - name: Prepare artifacts
+      run: echo "Zipping..."
   build-matrix:
+    needs: prepare-artifacts
     runs-on: windows-latest
     steps:
       - id: set-matrix
         run: echo '::set-output name=environments_arr::${{ github.event.inputs.Environment }}'
     outputs:
       environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
-  build:
+  deployment:
     needs: build-matrix
     strategy:
       matrix: 
@@ -22,5 +34,7 @@ jobs:
     runs-on: windows-latest
   
     steps: 
+    - name: Unzipping artifacts
+      run: echo "Extracting files..."
     - name: Single line script
       run: echo "Running ${{ github.job }} in ${{ matrix.environ }}"
