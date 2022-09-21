@@ -5,7 +5,7 @@ on:
     inputs:
       str:
         required: true
-
+#${{ github.event.inputs.str }}
 jobs: 
   build:
     runs-on: windows-latest
@@ -13,6 +13,6 @@ jobs:
     steps: 
     - name: Single line script
       id: splitString
-      run: echo "::set-output name=A::'$(awk -F, '{print $1}' <<< '${{ github.event.inputs.str }}')'"
+      run: echo "::set-output name=A::'$(echo '${{ github.event.inputs.str }}' | cut -d',' -f1)'"
     - name: Print first
       run: echo "${{ steps.splitString.outputs.A }}"
