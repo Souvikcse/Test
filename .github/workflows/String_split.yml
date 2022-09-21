@@ -13,6 +13,6 @@ jobs:
     steps: 
     - name: Single line script
       id: splitString
-      run: echo "::set-output name=A::'$(echo '${{ github.event.inputs.str }}' | cut -d',' -f1)'"
+      run: echo "::set-output name=A::$(echo '${{ github.event.inputs.str }}' | cut -d',' -f1)"
     - name: Print first
       run: echo "${{ steps.splitString.outputs.A }}"
