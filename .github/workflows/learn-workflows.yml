@@ -33,7 +33,7 @@ jobs:
     - name: Unzipping artifacts
       run: echo "Extracting files..."
     - name: checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@v2
     - name: Deployment in all Environments
       uses: ./.github/workflows/reusable-workflow.yml@master
       with: 
