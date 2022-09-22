@@ -32,9 +32,13 @@ jobs:
     steps: 
     - name: Unzipping artifacts
       run: echo "Extracting files..."
-    - name: checkout
-      uses: actions/checkout@v2
-    - name: Deployment in all Environments
-      uses: ./.github/workflows/reusable-workflow.yml@master
-      with: 
-        environments: ${{ github.event.inputs.Environments }}
+    - name: First
+      run: echo 'Running in $(echo '${{ inputs.environments }}' | cut -d "," -f1) environment'
+    - name: Second
+      run: echo 'Running in $(echo '${{ inputs.environments }}' | cut -d "," -f2) environment'
+ #   - name: checkout
+ #     uses: actions/checkout@v2
+ #   - name: Deployment in all Environments
+ #     uses: ./.github/workflows/reusable-workflow.yml@master
+ #     with: 
+ #       environments: ${{ github.event.inputs.Environments }}
