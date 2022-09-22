@@ -9,6 +9,7 @@ on:
 
 jobs:
   example_job:
+    if: inputs.environments != ''
     name: Pass input to my-action
     runs-on: windows-latest
     steps:
