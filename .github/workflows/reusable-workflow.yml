@@ -1,0 +1,18 @@
+name: Reusable workflow 
+
+on:
+  workflow_call:
+    inputs:
+      environments:
+        required: true
+        type: string
+
+jobs:
+  example_job:
+    name: Pass input to my-action
+    runs-on: windows-latest
+    steps:
+    - id: set-env
+      run: echo 'Running in $(echo '${{ inputs.Environment }}' | cut -d "=" -f1) environment'
+    - name: Call next
+      run: echo "Calling next"
