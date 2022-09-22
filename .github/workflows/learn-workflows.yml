@@ -33,6 +33,6 @@ jobs:
     - name: Unzipping artifacts
       run: echo "Extracting files..."
     - name: Deployment in all Environments
-      uses: reusable-workflow.yml@latest
+      uses: actions/reusable-workflow.yml@latest
       with: 
         environments: ${{ github.event.inputs.Environments }}
