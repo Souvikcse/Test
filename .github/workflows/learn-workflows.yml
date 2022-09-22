@@ -3,7 +3,7 @@ name: Learning Github Actions
 on: 
   workflow_dispatch:
     inputs:
-      Environment:
+      Environments:
         required: true
 
 jobs:
@@ -18,23 +18,20 @@ jobs:
     steps:
     - name: Prepare artifacts
       run: echo "Zipping..."
-  build-matrix:
-    needs: prepare-artifacts
-    runs-on: windows-latest
-    steps:
-      - id: set-matrix
-        run: echo '::set-output name=environments_arr::${{ github.event.inputs.Environment }}'
-    outputs:
-      environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
+#  build-matrix:
+#    needs: prepare-artifacts
+#    runs-on: windows-latest
+#    steps:
+#      - id: set-matrix
+#        run: echo '::set-output name=environments_arr::${{ github.event.inputs.Environment }}'
+#    outputs:
+#      environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
   deployment:
-    needs: build-matrix
-    strategy:
-      matrix: 
-        environ: ${{ fromJson(needs.build-matrix.outputs.environments_arr) }}
     runs-on: windows-latest
-  
     steps: 
     - name: Unzipping artifacts
       run: echo "Extracting files..."
-    - name: Single line script
-      run: echo "Running ${{ github.job }} in ${{ matrix.environ }}"
+    - name: Deployment in all Environments
+      uses: ./.github/workflows/reusable-workflow.yml
+      with: 
+        environments: ${{ github.event.inputs.Environments }}
