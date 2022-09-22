@@ -33,9 +33,9 @@ jobs:
     - name: Unzipping artifacts
       run: echo "Extracting files..."
     - name: First
-      run: echo 'Running in $(echo '${{ github.event.inputs.Environments }}' | cut -d "," -f1) environment'
+      run: echo "Running in $(echo '${{ github.event.inputs.Environments }}' | cut -d ',' -f1) environment"
     - name: Second
-      run: echo 'Running in $(echo '${{ github.event.inputs.Environments }}' | cut -d "," -f2) environment'
+      run: echo "Running in $(echo '${{ github.event.inputs.Environments }}' | cut -d ',' -f2) environment"
  #   - name: checkout
  #     uses: actions/checkout@v2
  #   - name: Deployment in all Environments
