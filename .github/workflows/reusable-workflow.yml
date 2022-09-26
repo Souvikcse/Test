@@ -14,7 +14,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - id: set-env
-      run: echo 'Running in $(echo '${{ inputs.environments }}' | cut -d "," -f1) environment'
+      run: echo "Running in $(echo '${{ inputs.environments }}' | cut -d ',' -f1) environment"
     - name: Call next
       run: echo "Calling next"
       # with input -> $(echo '${{ inputs.environments }}' | cut -d "," -f2-)
