@@ -28,11 +28,6 @@ jobs:
 #      environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
   deployment:
     needs: prepare-artifacts
-    runs-on: windows-latest
-    steps: 
-    - name: Unzipping artifacts
-      run: echo "Extracting files..."
-    - name: Deployment in all Environments
-      uses: Souvikcse/Test/.github/workflows/reusable-workflow.yml@master
-      with: 
-        environments: ${{ github.event.inputs.Environments }}
+    uses: Souvikcse/Test/.github/workflows/reusable-workflow.yml@master
+    with: 
+      environments: ${{ github.event.inputs.Environments }}
