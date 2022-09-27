@@ -19,3 +19,8 @@ jobs:
       run: echo "::set-output name=environments::$(echo '${{ inputs.environments }}' | cut -d ',' -f2)"
     outputs:
       environments: ${{ steps.next-env.outputs.environments }}
+  next_job:
+    needs: example_job
+    uses: Souvikcse/Test/.github/workflows/reusable-workflow.yml@master
+    with: 
+      environments: ${{ needs.example_job.outputs.environments }}
