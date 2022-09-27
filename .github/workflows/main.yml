@@ -1,0 +1,19 @@
+name: Sequential execution
+
+on: 
+  workflow_dispatch:
+    inputs:
+      Environments:
+        required: true
+        
+jobs:
+  example:
+    runs-on: windows-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        env: [Dev, Review, Prod]
+    steps:
+    - name: Run
+      run: echo "Running in ${{ matrix.env }} environment"
+      
