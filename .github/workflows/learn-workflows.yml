@@ -28,6 +28,7 @@ jobs:
 #      environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
   deployment:
     needs: prepare-artifacts
-    uses: Souvikcse/Test/.github/workflows/reusable-workflow.yml@master
-    with: 
-      environments: ${{ github.event.inputs.Environments }}
+    runs-on: windows-latest
+    steps:
+    - name: Executing
+      run: echo "Running in environment"
