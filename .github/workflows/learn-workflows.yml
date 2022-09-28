@@ -27,7 +27,7 @@ jobs:
     outputs:
       environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
   deployment:
-    needs: prepare-artifacts
+    needs: build-matrix
     runs-on: windows-latest
     strategy:
       max-parallel: 1
