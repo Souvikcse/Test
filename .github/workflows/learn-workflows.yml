@@ -34,6 +34,7 @@ jobs:
       matrix:
         version: ${{ fromJson(needs.build-matrix.outputs.environments_arr) }}
     environment: ${{ matrix.version }}
+    if: secrets.SERVER == 'a01'
     env: 
       server: ${{ secrets.SERVER }}
     steps:
