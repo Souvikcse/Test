@@ -34,9 +34,8 @@ jobs:
       matrix:
         version: ${{ fromJson(needs.build-matrix.outputs.environments_arr) }}
     environment: ${{ matrix.version }}
-    if: secrets.SERVER == 'a01'
     env: 
-      server: ${{ secrets.SERVER }}
+      server: ${{ secrets.SERVER_NAME }}
     steps:
     - name: Executing
       run: echo "Running in $env:server server"
