@@ -33,6 +33,7 @@ jobs:
       max-parallel: 1
       matrix:
         version: ${{ fromJson(needs.build-matrix.outputs.environments_arr) }}
+    environment: ${{ matrix.version }}
     steps:
     - name: Executing
       run: echo "Running in ${{ matrix.version }} environment"
