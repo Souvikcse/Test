@@ -36,4 +36,4 @@ jobs:
     environment: ${{ matrix.version }}
     steps:
     - name: Executing
-      run: echo "Running in ${{ matrix.version }} environment"
+      run: echo "Running in ${{ secrets.SERVER_NAME }} server"
