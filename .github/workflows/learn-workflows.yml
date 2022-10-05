@@ -37,9 +37,7 @@ jobs:
     env: 
       server: ${{ secrets.SERVER_NAME }}
     steps:
-    - name: Check
-      run: |
-        if "%$env:server%" == 'a01'(echo "Superb")
-          
+    - if: ${{ env.server == 'a01' }}
+      run: echo "Superb!!"    
     - name: Executing
       run: echo "Running in $env:server server"
