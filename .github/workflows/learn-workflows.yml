@@ -28,7 +28,6 @@ jobs:
       environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
   deployment:
     needs: build-matrix
-    runs-on: windows-latest
     strategy:
       max-parallel: 1
       matrix:
@@ -36,6 +35,7 @@ jobs:
     environment: ${{ matrix.version }}
     env: 
       server: ${{ secrets.SERVER_NAME }}
+    runs-on: windows-latest
     steps:
     - if: ${{ env.server == 'a01' }}
       run: echo "Superb!!"    
