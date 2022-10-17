@@ -34,10 +34,11 @@ jobs:
         version: ${{ fromJson(needs.build-matrix.outputs.environments_arr) }}
     environment: ${{ matrix.version }}
     env: 
+      greet: ${{ secrets.GREET }}
       server: ${{ secrets.SERVER_NAME }}
     runs-on: windows-latest
     steps:
     - if: ${{ env.server == 'a01' }}
-      run: echo "Superb!!"    
+      run: echo "${{ env.greet }} Superb!!"    
     - name: Executing
       run: echo "Running in $env:server server"
