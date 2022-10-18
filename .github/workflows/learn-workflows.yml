@@ -28,8 +28,9 @@ jobs:
     steps:
       - id: set-matrix
         run: |
-            myarray=(`echo '${{ inputs.Environments }}' | tr ',' ' '`)
-            echo "::set-output name=environments_arr::$myarray"
+            line="${{ inputs.Environments }}"
+            arr=($line)
+            echo "::set-output name=environments_arr::$arr"
     outputs:
       environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
   deployment:
