@@ -5,6 +5,7 @@ on:
     inputs:
       Environments:
         description: Add a comma before your input & input should be in single quotes
+        default: "['DEV']"
         required: false
         
 env:
@@ -27,9 +28,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - id: set-matrix
-        run: |
-            arr=(${"${{ inputs.Environments }}"//,/})
-            echo "::set-output name=environments_arr::$arr"
+        run: echo "::set-output name=environments_arr::${{ inputs.Environments }}"
     outputs:
       environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
   deployment:
