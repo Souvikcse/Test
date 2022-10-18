@@ -28,8 +28,7 @@ jobs:
     steps:
       - id: set-matrix
         run: |
-            line="${{ inputs.Environments }}"
-            arr=($line)
+            IFS=',' read -r -a arr <<<"${{ inputs.Environments }}"
             echo "::set-output name=environments_arr::$arr"
     outputs:
       environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
