@@ -1,10 +1,9 @@
 name: test workflow dispatch
 
 on: 
-  workflow_dispatch:
-    inputs:
-      str:
-        required: true
+  push:
+    branches:
+    - test_again
 #${{ github.event.inputs.str }}
 jobs: 
   build:
@@ -13,6 +12,6 @@ jobs:
     steps: 
     - name: Single line script
       id: splitString
-      run: echo "::set-output name=A::$(echo '${{ github.event.inputs.str }}' | cut -d',' -f1)"
+      run: echo "::set-output name=A::$(echo 'DEV,hey' | cut -d',' -f1)"
     - name: Print first
       run: echo "${{ steps.splitString.outputs.A }}"
