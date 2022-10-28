@@ -1,4 +1,4 @@
-name: Splitting a string
+name: Split string
 
 on: 
   workflow_dispatch:
