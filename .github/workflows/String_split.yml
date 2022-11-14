@@ -11,6 +11,7 @@ on:
         
 env: 
   str: ${{ github.event.inputs.str || 'hi,hey' }}
+  #check
   
 jobs: 
   build:
