@@ -2,7 +2,7 @@ name: Splitting a string
 
 on: 
   push:
-    branch:
+    branches:
       - 'feature/**'
   workflow_dispatch:
     inputs:
@@ -11,7 +11,7 @@ on:
         
 env: 
   str: ${{ github.event.inputs.str || 'dev,hey' }}
-#${{ github.event.inputs.str }}
+  
 jobs: 
   build:
     runs-on: windows-latest
@@ -19,6 +19,6 @@ jobs:
     steps: 
     - name: Single line script
       id: splitString
-      run: echo "::set-output name=A::$(echo '${{ github.event.inputs.str }}' | cut -d',' -f1)"
+      run: echo "::set-output name=A::$(echo '${{ env.str }}' | cut -d',' -f1)"
     - name: Print first
       run: echo "${{ steps.splitString.outputs.A }}"
