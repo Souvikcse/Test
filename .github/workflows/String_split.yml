@@ -1,6 +1,9 @@
 name: Splitting a string
 
 on: 
+  push:
+    branch:
+      - 'feature/**'
   workflow_dispatch:
     inputs:
       str:
