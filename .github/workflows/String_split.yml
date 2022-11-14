@@ -10,7 +10,8 @@ on:
         required: true
         
 env: 
-  str: ${{ github.event.inputs.str || 'hi,hey' }}
+  str: ${{ github.event.inputs.str || 'hi,hey' }} 
+  #check
   
 jobs: 
   build:
