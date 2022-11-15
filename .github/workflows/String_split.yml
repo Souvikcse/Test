@@ -18,6 +18,8 @@ jobs:
     runs-on: windows-latest
   
     steps: 
+    - name: Print Branch name
+      run: echo "${{ github.event.push.head.ref }}"
     - name: Single line script
       id: splitString
       run: echo "::set-output name=A::$(echo '${{ env.str }}' | cut -d',' -f1)"
