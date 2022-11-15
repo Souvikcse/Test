@@ -18,12 +18,8 @@ jobs:
     runs-on: windows-latest
   
     steps:
-    - name: Extract branch name
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-      id: extract_branch
-      
     - name: Print branch
-      run: echo "${{ steps.extract_branch.outputs.branch }}"
+      run: echo "${{ github.ref_name }}"
     - name: Single line script
       id: splitString
       run: echo "::set-output name=A::$(echo '${{ env.str }}' | cut -d',' -f1)"
