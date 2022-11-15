@@ -23,7 +23,7 @@ jobs:
       id: extract_branch
       
     - name: Print branch
-      run: echo ${{ steps.extract_branch.outputs.branch }}
+      run: echo "${{ steps.extract_branch.outputs.branch }}"
     - name: Single line script
       id: splitString
       run: echo "::set-output name=A::$(echo '${{ env.str }}' | cut -d',' -f1)"
