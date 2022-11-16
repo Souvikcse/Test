@@ -9,17 +9,19 @@ on:
       str:
         required: true
         
-env: 
-  str: ${{ github.event.inputs.str || 'hi,hey' }}
+
   #check
   
 jobs: 
   build:
     runs-on: windows-latest
+    environment: DEV
+    env: 
+      str: ${{ github.event.inputs.str || secrets.GREET }}
   
     steps:
     - name: Print branch
-      run: echo "${{ github.ref_name }}"
+      run: echo "${{ env.str }}"
     - name: Single line script
       id: splitString
       run: echo "::set-output name=A::$(echo '${{ env.str }}' | cut -d',' -f1)"
