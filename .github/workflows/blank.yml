@@ -3,17 +3,23 @@
 name: CI Test
 
 on:
-  push:
-    branches: 'feature/**'
+#  push:
+#   branches: 'feature/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      count: 
+        required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: |
+            for ($i = 0; $i -lt ${{ github.event.inputs.count }}; $i++) { 
+              echo "$i"
+            }
