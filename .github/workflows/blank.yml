@@ -23,5 +23,5 @@ jobs:
       - name: Run a one-line script
         run: |
             for ($i = 0; $i -lt ${{ github.event.inputs.count }}; $i++) { 
-              echo "${{ github.event.inputs.prefix }}$i"
+              echo "${{ github.event.inputs.prefix }}$i\"
             }
