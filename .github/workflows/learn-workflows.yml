@@ -20,7 +20,7 @@ jobs:
     steps:
     - id: set-matrix
       if: ${{ env.environs_arr != null }}
-      run: echo "name=environments_arr::${{ inputs.Environments }}" >> $GITHUB_OUTPUT
+      run: echo "::set-output name=environments_arr::${{ inputs.Environments }}"
     - id: set-matrix-fail 
       if: ${{ env.environs_arr == null }}
       run: echo "hello"
