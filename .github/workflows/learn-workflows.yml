@@ -1,6 +1,8 @@
 name: Learning Github Actions
 
 on: 
+  push:
+  
   workflow_dispatch:
     inputs:
       Environments:
@@ -9,7 +11,7 @@ on:
         required: false
         
 env:
-  env_arr: DEV
+  environs_arr: ${{ github.event.inputs.Environments || "['STAGE']" }}
 
 jobs:
   build:
@@ -28,7 +30,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - id: set-matrix
-        run: echo "::set-output name=environments_arr::${{ inputs.Environments }}"
+        run: echo "::set-output name=environments_arr::${{ env.environs_arr }}"
     outputs:
       environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
   deployment:
