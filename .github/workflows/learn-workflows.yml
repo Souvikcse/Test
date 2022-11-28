@@ -19,9 +19,10 @@ jobs:
     runs-on: windows-latest
     steps:
     - id: set-matrix
+      if: ${{ env.environs_arr != null }}
       run: echo "::set-output name=environments_arr::${{ env.environs_arr }}"
     - id: set-matrix-fail 
-      if: ${{ failure() }}
+      if: ${{ env.environs_arr == null }}
       run: echo "hello"
     outputs:
       environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
