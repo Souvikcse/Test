@@ -11,22 +11,10 @@ on:
         required: false
         
 env:
-  environs_arr: ${{ github.event.inputs.Environments || '[''DEV'']' }} 
+  environs_arr: ${{ github.event.inputs.Environments || secrets.ENV_ARR }} 
 
 jobs:
-  build:
-    runs-on: windows-latest
-    steps:
-    - name: Build project
-      run: echo "Compiling..."
-  prepare-artifacts:
-    needs: build
-    runs-on: windows-latest
-    steps:
-    - name: Prepare artifacts
-      run: echo "Zipping..."
   build-matrix:
-    needs: prepare-artifacts
     runs-on: windows-latest
     steps:
     - id: set-matrix
