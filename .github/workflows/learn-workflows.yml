@@ -26,7 +26,7 @@ jobs:
       run: |
           while IFS= read -r line; do
             echo "::set-output name=${line/=/::}"
-          done < .github/$the_env.env
+          done < .github/config
     outputs:
       environments_arr: ${{ steps.set-matrix-fail.outputs.arr }}
   deployment:
