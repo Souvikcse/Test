@@ -11,7 +11,7 @@ on:
         required: false
         
 env:
-  environs_arr: ${{ github.event.inputs.Environments || secrets.ENV_ARR }} 
+  environs_arr: ${{ github.event.inputs.Environments || secrets.ENV_ARR }} #
 
 jobs:
   build-matrix:
