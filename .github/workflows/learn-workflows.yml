@@ -11,7 +11,7 @@ on:
         required: false
         
 env:
-  environs_arr: ${{ github.event.inputs.Environments || 'STAGE' }}
+  environs_arr: ${{ github.event.inputs.Environments || '["STAGE"]' }}
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - id: set-matrix
-        run: echo "::set-output name=environments_arr::[${{ env.environs_arr }}]"
+        run: echo "::set-output name=environments_arr::${{ env.environs_arr }}"
     outputs:
       environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
   deployment:
