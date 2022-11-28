@@ -24,6 +24,8 @@ jobs:
     - id: set-matrix-fail 
       if: ${{ env.environs_arr == null }}
       run: echo "hello"
+    - id: check-output
+      run: echo "${{ steps.set-matrix.outputs.environments_arr }}"
     outputs:
       environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
   deployment:
