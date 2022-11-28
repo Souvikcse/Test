@@ -24,7 +24,7 @@ jobs:
     - id: set-matrix-fail 
       if: ${{ env.environs_arr == null }}
       run: |
-          while IFS= read -r line; do
+          while (IFS= read -r line); do
             echo "::set-output name=${line/=/::}"
           done < .github/config.txt
     outputs:
