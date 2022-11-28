@@ -12,6 +12,7 @@ on:
         
 env:
   env_arr: "['DEV']"
+  environs_arr: ${{ github.event.inputs.Environments || env.env_arr }}
 
 jobs:
   build:
@@ -28,8 +29,6 @@ jobs:
   build-matrix:
     needs: prepare-artifacts
     runs-on: windows-latest
-    env:
-      environs_arr: ${{ github.event.inputs.Environments || env.env_arr }}
     steps:
       - id: set-matrix
         run: echo "::set-output name=environments_arr::${{ env.environs_arr }}"
