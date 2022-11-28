@@ -11,7 +11,7 @@ on:
         required: false
         
 env:
-  environs_arr: ${{ github.event.inputs.Environments || "'STAGE', 'DEV'" }}
+  environs_arr: ${{ github.event.inputs.Environments || 'STAGE' }}
 
 jobs:
   build:
