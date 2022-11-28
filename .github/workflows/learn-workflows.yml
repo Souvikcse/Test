@@ -24,9 +24,8 @@ jobs:
     - id: set-matrix-fail 
       if: ${{ env.environs_arr == null }}
       run: |
-          while IFS= read -r line; do
-            echo "::set-output name=${line/=/::}"
-          done < .github/config
+          $raw = Get-Content -Path .github/config.txt
+          echo "::set-output name=$raw"
     outputs:
       environments_arr: ${{ steps.set-matrix-fail.outputs.arr }}
   deployment:
