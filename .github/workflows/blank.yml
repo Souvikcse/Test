@@ -1,5 +1,4 @@
 # This is a basic workflow to help you get started with Actions
-
 name: CI Test
 
 on:
@@ -13,6 +12,9 @@ on:
         required: true
       count: 
         required: true
+        
+env:
+  check: ${{ secrets.CHECKACCESS }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -25,3 +27,5 @@ jobs:
             for ($i = 0; $i -lt ${{ github.event.inputs.count }}; $i++) { 
               echo "${{ github.event.inputs.prefix }}$i\"
             }
+      - name: Run one-line script
+        run: echo "${{ env.check }}"
