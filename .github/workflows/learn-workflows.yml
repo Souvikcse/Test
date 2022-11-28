@@ -11,7 +11,7 @@ on:
         required: false
         
 env:
-  environs_arr: ${{ github.event.inputs.Environments || ['DEV'] }} 
+  environs_arr: ${{ github.event.inputs.Environments || "['DEV']" }} 
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - id: set-matrix
-      run: echo "::set-output name=environments_arr::${{ "hello" }}"
+      run: echo "::set-output name=environments_arr::${{ inputs.Environments }}"
     outputs:
       environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
   deployment:
@@ -38,7 +38,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        version: ${{ fromJson(toJSON(env.environs_arr)) }}
+        version: ${{ fromJson(env.environs_arr) }}
     environment: ${{ matrix.version }}
     env: 
       greet: ${{ secrets.GREET }}
