@@ -28,7 +28,7 @@ jobs:
     - name: Set the value
       id: folder_path
       run: |
-          for ($i = 1; $i -le ${{ env.count }}; $i++){
+          for ($i = 1; $i -le 2; $i++){
             Set-Variable -Name "desc" -Value "${{ secrets['FOLDER$i'] }}"
             echo $desc
           }
