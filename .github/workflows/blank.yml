@@ -26,7 +26,8 @@ jobs:
     - name: Set the value
       id: step_one
       run: |
-         echo "action_state=yellow" >> $GITHUB_ENV
+         action_state="${{ github.event.inputs.foo }}"
+         echo "action_state=${action_state}" >> $GITHUB_ENV
     - name: Use the value
       id: step_two
       run: |
