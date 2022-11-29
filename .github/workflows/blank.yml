@@ -29,5 +29,5 @@ jobs:
       - name: Run one-line script
         run: |
             for ($i = 1; $i -le ${{ github.event.inputs.count }}; $i++) { 
-              echo "${{ env.folder }}"
+              echo $env:folder 
             }
