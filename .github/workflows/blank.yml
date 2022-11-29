@@ -23,11 +23,11 @@ jobs:
     environment: DEV
 
     steps:
-      - name: Run a one-line script
-        run: |
-            echo "folder=hey" >> $GITHUB_ENV
-      - name: Run one-line script
-        run: |
-            for ($i = 1; $i -le ${{ github.event.inputs.count }}; $i++) { 
-              echo $env:folder 
-            }
+    - name: Set the value
+      id: step_one
+      run: |
+         echo "action_state=yellow" >> $GITHUB_ENV
+    - name: Use the value
+      id: step_two
+      run: |
+        echo "${{ env.action_state }}"
