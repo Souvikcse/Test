@@ -26,8 +26,10 @@ jobs:
       - name: Run a one-line script
         run: |
             for ($i = 1; $i -le ${{ github.event.inputs.count }}; $i++) { 
-              echo "folder=$i" >> $GITHUB_ENV
-              echo "${{ env.folder }}"
+              echo "'folder$i'=hey" >> $GITHUB_ENV
             }
-#      - name: Run one-line script
-#        run: echo "${{ env.check }}"
+      - name: Run one-line script
+        run: |
+            for ($i = 1; $i -le ${{ github.event.inputs.count }}; $i++) { 
+              echo "${{ env.folder1 }}"
+            }
