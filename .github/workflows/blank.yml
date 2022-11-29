@@ -29,4 +29,4 @@ jobs:
       id: step_one
       run: |
           Set-Variable -Name "desc" -Value "A description"
-          Get-Variable -Name "desc"
+          echo $desc
