@@ -28,8 +28,5 @@ jobs:
     - name: Set the value
       id: step_one
       run: |
-         echo "::set-env action_state=hey"
-    - name: Use the value
-      id: step_two
-      run: |
-        echo "${{ env.action_state }}"
+          Set-Variable -Name "desc" -Value "A description"
+          Get-Variable -Name "desc"
