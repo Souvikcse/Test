@@ -20,12 +20,13 @@ env:
 jobs:
   build:
     runs-on: windows-latest
+    environment: DEV
 
     steps:
       - name: Run a one-line script
         run: |
-            for ($i = 0; $i -lt ${{ github.event.inputs.count }}; $i++) { 
-              echo "${{ github.event.inputs.prefix }}$i\"
+            for ($i = 1; $i -le ${{ github.event.inputs.count }}; $i++) { 
+              echo "${{ secrets['FOLDER' + $i] }}\"
             }
-      - name: Run one-line script
-        run: echo "${{ env.check }}"
+#      - name: Run one-line script
+#        run: echo "${{ env.check }}"
