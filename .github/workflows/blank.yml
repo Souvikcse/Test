@@ -22,7 +22,7 @@ jobs:
     runs-on: windows-latest
     environment: DEV
     env:
-      action_state: ""
+      action_state: "hell"
 
     steps:
     - name: Set the value
