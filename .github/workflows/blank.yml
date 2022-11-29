@@ -26,7 +26,8 @@ jobs:
       - name: Run a one-line script
         run: |
             for ($i = 1; $i -le ${{ github.event.inputs.count }}; $i++) { 
-              echo "${{ secrets['FOLDER' + $i] }}\"
+              echo "folder = 'FOLDER' + $i"
+              echo "${{ secrets[format('FOLDER{0}', $i)] }}\"
             }
 #      - name: Run one-line script
 #        run: echo "${{ env.check }}"
