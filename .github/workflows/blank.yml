@@ -29,6 +29,6 @@ jobs:
       run: |
           for ($i = 1; $i -le ${{ inputs.count }}; $i++){
             Set-Variable -Name "folder" -Value "FOLDER$i"
-            Set-Variable -Name "desc" -Value "${{ secrets['FOLDER' + '1'] }}"
+            Set-Variable -Name "desc" -Value "${{ secrets[format('FOLDER{0}', '1')] }}"
             echo $desc
           }
