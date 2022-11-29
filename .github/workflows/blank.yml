@@ -29,6 +29,7 @@ jobs:
       id: folder_path
       run: |
           for ($i = 1; $i -le 2; $i++){
+            Set-Variable -Name "folder" -Value "FOLDER$i"
             Set-Variable -Name "desc" -Value "${{ secrets[format('FOLDER{0}', '$i')] }}"
-            echo $desc
+            echo $folder
           }
