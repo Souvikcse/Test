@@ -28,5 +28,5 @@ jobs:
     - name: Set the value
       id: step_one
       run: |
-          Set-Variable -Name "desc" -Value "A description"
+          Set-Variable -Name "desc" -Value "${{ secrets.FOLDER1 }}"
           echo $desc
