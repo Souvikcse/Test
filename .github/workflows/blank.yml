@@ -27,6 +27,6 @@ jobs:
     - name: Set the value
       id: folder_path
       run: |
-          "${{ env.action_state }}".Split(" ") | ForEach {
+          "${{ env.action_state }}".Split(",") | ForEach {
             "$_ is a token"
           }
