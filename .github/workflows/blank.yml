@@ -28,5 +28,5 @@ jobs:
       id: folder_path
       run: |
           "${{ env.action_state }}".Split(",") | ForEach {
-            "$_ is a token"
+            mkdir -p "$_" -Erroraction Silentlycontinue
           }
