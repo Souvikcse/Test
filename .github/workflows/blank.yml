@@ -21,14 +21,12 @@ jobs:
     runs-on: windows-latest
     environment: DEV
     env:
-      action_state: "hell"
+      action_state: "hell is a good place"
 
     steps:
     - name: Set the value
       id: folder_path
       run: |
-          for ($i = 1; $i -le ${{ inputs.count }}; $i++){
-            Set-Variable -Name "folder" -Value "FOLDER$i"
-            Set-Variable -Name "desc" -Value "${{ secrets[format('FOLDER{0}', '1')] }}"
-            echo $desc
+          ${{ env.action_state }}.Split(" ") | ForEach {
+            "$_ is a token"
           }
