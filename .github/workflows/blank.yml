@@ -21,7 +21,7 @@ jobs:
     runs-on: windows-latest
     environment: DEV
     env:
-      action_state: "hell is a good place"
+      action_state: ${{ secrets.GREET }}
 
     steps:
     - name: Set the value
