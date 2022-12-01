@@ -21,8 +21,8 @@ jobs:
     - id: set-matrix
       run: |
           Set-Variable -Name "desc" -Value "${{ env.environs_arr }}".Split(",")
-          $desc -join ","
-          echo $desc
+          $a = $desc -join ","
+          echo $a
     outputs:
       environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
   deployment:
