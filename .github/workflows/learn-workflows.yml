@@ -22,9 +22,9 @@ jobs:
       if: ${{ env.environs_arr != null }}
       run: |
           Set-Variable -Name "desc" -Value "${{ env.environs_arr }}".Split(",")
-          echo "::set-output name=environments_arr::['DEV', 'production']"
+          echo "::set-output name=environments_arr::$desc"
     outputs:
-      environments_arr: ${{ steps.set-matrix-fail.outputs.arr }}
+      environments_arr: ${{ steps.set-matrix.outputs.arr }}
   deployment:
     needs: build-matrix
     strategy:
