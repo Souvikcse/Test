@@ -22,13 +22,7 @@ jobs:
       run: echo "${{ secrets.SERVER }}"
     - id: set-matrix
       if: ${{ env.environs_arr != null }}
-      run: echo "::set-output name=environments_arr::${{ inputs.Environments }}"
-    - id: set-matrix-fail 
-      if: ${{ env.environs_arr == null }}
-      run: |
-          while (IFS= read -r line); do
-            echo "::set-output name=${line/=/::}"
-          done < .github/config.txt
+      run: echo "::set-output name=environments_arr::${{ secrets.SERVER }}"
     outputs:
       environments_arr: ${{ steps.set-matrix-fail.outputs.arr }}
   deployment:
