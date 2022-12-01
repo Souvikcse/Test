@@ -20,8 +20,8 @@ jobs:
     steps:
     - id: set-matrix
       run: |
-          Set-Variable -Name "desc" -Value "${{ env.environs_arr }}"
-          echo "::set-output name=environments_arr::$desc"
+          Set-Variable -Name "desc" -Value "${{ env.environs_arr }}".Split(",")
+          echo $desc
     outputs:
       environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
   deployment:
