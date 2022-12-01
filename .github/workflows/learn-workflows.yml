@@ -19,10 +19,12 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Print Repo secret
-      run: echo "${{ secrets.SERVER }}"
+      run: |
+          Set-Variable -Name "desc" -Value "${{ secrets.SERVER }}"
+          echo "$desc"
     - id: set-matrix
       if: ${{ env.environs_arr != null }}
-      run: echo "::set-output name=environments_arr::${{ secrets.SERVER }}"
+      run: echo "::set-output name=environments_arr::${{ inputs.Environments }}"
     outputs:
       environments_arr: ${{ steps.set-matrix-fail.outputs.arr }}
   deployment:
