@@ -18,15 +18,11 @@ jobs:
   build-matrix:
     runs-on: windows-latest
     steps:
-    - name: Print Repo secret
-      run: |
-          
-          echo "$desc"
     - id: set-matrix
       if: ${{ env.environs_arr != null }}
       run: |
           Set-Variable -Name "desc" -Value "${{ env.environs_arr }}".Split(",")
-          echo "::set-output name=environments_arr::$desc"
+          echo "::set-output name=environments_arr::['DEV', 'production']"
     outputs:
       environments_arr: ${{ steps.set-matrix-fail.outputs.arr }}
   deployment:
