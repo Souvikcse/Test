@@ -18,6 +18,8 @@ jobs:
   build-matrix:
     runs-on: windows-latest
     steps:
+    - name: Print Repo secret
+      run: echo "${{ secrets.SERVER }}"
     - id: set-matrix
       if: ${{ env.environs_arr != null }}
       run: echo "::set-output name=environments_arr::${{ inputs.Environments }}"
