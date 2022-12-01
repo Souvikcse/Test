@@ -19,12 +19,11 @@ jobs:
     runs-on: windows-latest
     steps:
     - id: set-matrix
-      if: ${{ env.environs_arr != null }}
       run: |
           Set-Variable -Name "desc" -Value "${{ env.environs_arr }}".Split(",")
           echo "::set-output name=environments_arr::$desc"
     outputs:
-      environments_arr: ${{ steps.set-matrix.outputs.arr }}
+      environments_arr: ${{ steps.set-matrix.outputs.environments_arr }}
   deployment:
     needs: build-matrix
     strategy:
