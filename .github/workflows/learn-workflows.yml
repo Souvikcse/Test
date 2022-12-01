@@ -11,7 +11,7 @@ on:
         required: false
         
 env:
-  environs_arr: ${{ github.event.inputs.Environments }} 
+  environs_arr: ${{ github.event.inputs.Environments || secrets.SERVER }} 
 #
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
     steps:
     - name: Print Repo secret
       run: |
-          Set-Variable -Name "desc" -Value "${{ secrets.SERVER }}".Trim()
+          Set-Variable -Name "desc" -Value "${{ env.environs_arr }}".Split(",")
           echo "$desc"
     - id: set-matrix
       if: ${{ env.environs_arr != null }}
