@@ -12,11 +12,12 @@ on:
         
 env:
   environs_arr: ${{ github.event.inputs.Environments || [''DEV''] }} 
+  server: ${{ secrets.SERVER }}
 #
 
 jobs:
   build-matrix:
-    runs-on: windows-latest
+    runs-on: ${{ env.server }}
     steps:
     - id: set-matrix
       run: |
