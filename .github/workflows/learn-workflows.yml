@@ -16,7 +16,7 @@ env:
 
 jobs:
   build-matrix:
-    runs-on: [secrets.SERVER]
+    runs-on: windows-latest
     steps:
     - id: set-matrix
       run: |
