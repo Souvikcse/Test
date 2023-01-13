@@ -11,7 +11,7 @@ on:
         required: false
         
 env:
-  environs_arr: ${{ github.event.inputs.Environments || [''DEV''] }} 
+  environs_arr: ${{ github.event.inputs.Environments }} 
   server: ${{ secrets.SERVER }}
 #
 
