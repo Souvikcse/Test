@@ -24,9 +24,18 @@ jobs:
       action_state: ${{ secrets.GREET }}
 
     steps:
-    - name: Set the value
-      id: folder_path
-      run: |
-          "${{ env.action_state }}".Split(",") | ForEach {
-            mkdir -p "$_" -Erroraction Silentlycontinue
-          }
+      - name: Get the branch name
+        id: get_branch
+        run: |
+            $branch = "${{ github.ref_name }}".replace("/", "_")
+            echo "::set-output name=branchName::$branch"
+            
+      - name: Use the branch name
+        run: echo "${{ steps.get_branch.outputs.branchName }}"
+        
+#     - name: Set the value
+#       id: folder_path
+#       run: |
+#           "${{ env.action_state }}".Split(",") | ForEach {
+#             mkdir -p "$_" -Erroraction Silentlycontinue
+#           }
